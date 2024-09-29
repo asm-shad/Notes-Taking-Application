@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <main>
-        <button>
-            <i class="fa-solid fa-trash"></i>
-        </button>
+<body class="h-dvh w-full bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% ...">
+    <main class="container mx-auto">
+        <button id="addBtn" class="btn btn-accent fixed top-[20px] right-[20px] text-white border-none cursor-pointer transition duration-300"><i class="fas fa-plus"></i>Add Note</button>
+        <div id="main" class="pb-12 flex items-center justify-center flex-wrap">
+            <!-- <div class="note bg-base-300 m-4 overflow-hidden transition-shadow duration-300 ease-in-out shadow-lg rounded-md">
+                 <div class="tool p-2 flex justify-end">
+                    <i class="fas fa-save p-1 transition-colors duration-300 ease-in-out hover:text-blue-500"></i>
+                    <i class="fas fa-trash p-1 cursor-pointer transition-colors duration-300 ease-in-out hover:text-blue-500"></i>
+                 </div>
+                <div class="bg-base-200">
+                    <textarea class="textarea border-none min-h-[220px] w-[300px] resize-none p-3 text-[16px] text-white bg-transparent focus:outline-none" placeholder="Note"></textarea>
+                </div>
+            </div> -->
+        </div>
     </main>
     <script src="https://kit.fontawesome.com/f0a8a2e883.js" crossorigin="anonymous"></script>
     <script src="./app.js"></script>
