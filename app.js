@@ -8,7 +8,7 @@ function addNote(){
     const note = document.createElement('div');
     note.classList.add('note');
     note.innerHTML = `
-        <div class="note bg-base-300 m-4 overflow-hidden transition-shadow duration-300 ease-in-out shadow-lg rounded-md">
+        <div class="bg-base-300 m-4 overflow-hidden transition-shadow duration-300 ease-in-out shadow-lg rounded-md">
             <div class="tool p-2 flex justify-end">
                 <i class="save fas fa-save p-1 transition-colors duration-300 ease-in-out hover:text-blue-500"></i>
                 <i class="trash fas fa-trash p-1 cursor-pointer transition-colors duration-300 ease-in-out hover:text-blue-500"></i>
@@ -24,17 +24,17 @@ function addNote(){
 
     save.addEventListener('click', saveNotes);
     textarea.addEventListener('input', saveNotes);
-    trash.addEventListener('click', () => ){
+    trash.addEventListener('click', () => {  
         note.remove();
         saveNotes();
-    }
+    });
 
     main.appendChild(note);
 }
 
 function saveNotes(){
     const notes = document.querySelectorAll('.note textarea');     
-    const data = Array.from(notes).map(note => note.value);
+    const data = [...notes].map(note => note.value);
     console.log(notes, data);
 
     if(data.length === 0){
@@ -43,3 +43,20 @@ function saveNotes(){
         localStorage.setItem('notes', JSON.stringify(data));
     }
 }
+
+function loadNotes(){
+    const lsNotes = JSON.parse(localStorage.getItem('notes'));
+
+    if(lsNotes !== null){
+        lsNotes.forEach(noteText => {
+            addNote();
+            const notes = document.querySelectorAll('.note textarea');
+            const lastNote = notes[notes.length - 1];
+            lastNote.value = noteText;
+        });
+    } else{
+        addNote();
+    }
+}
+
+loadNotes();
